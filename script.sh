@@ -1,4 +1,4 @@
 #!/bin/sh
 
-sudo terraform init
-sudo terraform -y apply
+sudo /tmp/tools/org.jenkinsci.plugins.terraform.TerraformInstallation/Terraform/terraform init
+sudo /tmp/tools/org.jenkinsci.plugins.terraform.TerraformInstallation/Terraform/terraform -y apply

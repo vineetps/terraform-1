@@ -1,15 +1,15 @@
-variable "TF_VAR_client_id" {
+variable "client_id" {
   description=" "
 }
 
-variable "TF_VAR_subscription_id" {
+variable "subscription_id" {
   description=" "
 }
 
-variable "TF_VAR_client_secret" {
+variable "client_secret" {
   description=" "
 }
 
-variable "TF_VAR_tenant_id" {
+variable "tenant_id" {
   description=" "
 }

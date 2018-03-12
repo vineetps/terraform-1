@@ -4,7 +4,7 @@ resource "azurerm_virtual_network" "vnet" {
   location            = "${azurerm_resource_group.rg.location}"
   resource_group_name = "${azurerm_resource_group.rg.name}"
 }
- 
+
 
 resource "azurerm_subnet" "PublicSubnetA" {
     resource_group_name  = "${azurerm_resource_group.rg.name}"
@@ -46,7 +46,7 @@ resource "azurerm_network_security_group" "securitygroup" {
     resource_group_name = "${azurerm_resource_group.rg.name}"
     tags {
        createdby  = "Terraform"
-    }    
+    }
 }
 resource "azurerm_network_security_rule" "ingress" {
         name                       = "Any"

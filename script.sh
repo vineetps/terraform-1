@@ -8,7 +8,7 @@ id
 #cd workspace/TerraformInit/
 wget https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_386.zip -P /tmp
 sudo unzip -o /tmp/terraform_0.11.3_linux_386.zip -d /tmp
-cp /tmp/terraform /usr/bin
+sudo cp /tmp/terraform /usr/bin
 terraform init
 terraform apply 
 

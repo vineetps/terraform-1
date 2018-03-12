@@ -5,9 +5,9 @@ pwd
 echo "~~~~~~~~~~~~~~~~~~~~~Logged User~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 id
 #cd workspace/TerraformInit/
-sudo wget https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_386.zip -P /tmp
-sudo unzip /tmp/terraform_0.11.3_linux_386.zip
-sudo cp /tmp/terraform /usr/bin
+wget https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_386.zip -P /tmp
+unzip /tmp/terraform_0.11.3_linux_386.zip
+cp /tmp/terraform /usr/bin
 terraform init
 terraform apply 
 

@@ -1,6 +1,6 @@
  #!/bin/sh
 uname -a
-apt-get install sudo -y
+apt-get --yes install sudo
 echo "******Terraform Init******"
 pwd
 echo "~~~~~~~~~~~~~~~~~~~~~Logged User~~~~~~~~~~~~~~~~~~~~~~~~~~~~"

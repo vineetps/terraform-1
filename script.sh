@@ -1,5 +1,5 @@
  #!/bin/sh
-yum install sudo -y
+uname -a
 echo "******Terraform Init******"
 pwd
 echo "~~~~~~~~~~~~~~~~~~~~~Logged User~~~~~~~~~~~~~~~~~~~~~~~~~~~~"

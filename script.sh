@@ -29,9 +29,9 @@ echo -e "\n"
 
 echo -e "\n"
 echo "************************************************"
-echo '                Creating Output.txt             '
+echo '                Creating Output.json             '
 echo "************************************************"
 echo -e "\n"
 
 
-./terraform show > output.txt
+./terraform output -json > output.json

@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "rg" {
-  name     = "Jenkins-Terraform"
+  name     = "Terraform-Jenkins"
   location = "West US"
 }

@@ -1,11 +1,10 @@
 #################################################################
 
 
-
 ## Vnet
 
 resource "azurerm_virtual_network" "vnet" {
-  name                = "VineetVNet"
+  name                = "Terraform-VNet"
   address_space       = ["10.0.0.0/16"]
   location            = "${azurerm_resource_group.rg.location}"
   resource_group_name = "${azurerm_resource_group.rg.name}"
@@ -52,7 +51,7 @@ resource "azurerm_subnet" "PrivateSubnetB" {
 ## Security Group
 
 resource "azurerm_network_security_group" "securitygroup" {
-    name                = "Vineet-SG"
+    name                = "Terraform-SG"
     location            = "westus"
     resource_group_name = "${azurerm_resource_group.rg.name}"
     tags {
@@ -80,7 +79,7 @@ resource "azurerm_network_security_rule" "ingress" {
 ## Public IP
 
 resource "azurerm_public_ip" "eip" {
-  name                         = "Vineet-PublicIP"
+  name                         = "Terraform-PublicIP"
   location                     = "${azurerm_resource_group.rg.location}"
   resource_group_name          = "${azurerm_resource_group.rg.name}"
   public_ip_address_allocation = "Static"
@@ -92,30 +91,32 @@ resource "azurerm_public_ip" "eip" {
 ## Network Interface- Private IP
 
 resource "azurerm_network_interface" "networkinterface" {
-  name                = "Vineet-NetworkInterface"
+  name                = "Terraform-NetworkInterface"
   location            = "${azurerm_resource_group.rg.location}"
   resource_group_name = "${azurerm_resource_group.rg.name}"
+  network_security_group_id = "${azurerm_network_security_group.securitygroup.id}"
   tags {
         createdby = "Terraform"
     }
   ip_configuration {
-    name                          = "Vineet"
+    name                          = "Terraform"
     subnet_id                     = "${azurerm_subnet.PublicSubnetA.id}"
     private_ip_address_allocation = "dynamic"
-  }
+    public_ip_address_id = "${azurerm_public_ip.eip.id}"
+    }
 }
 
 ## Route Table
 
 
 resource "azurerm_route_table" "routetable" {
-  name                = "Vineet-RouteTable"
+  name                = "Terraform-Routetable"
   location            = "${azurerm_resource_group.rg.location}"
   resource_group_name = "${azurerm_resource_group.rg.name}"
 }
 
 resource "azurerm_route" "routeentry" {
-  name                = "Vineet_RouteEnry"
+  name                = "Terraform_RouteEnry"
   resource_group_name = "${azurerm_resource_group.rg.name}"
   route_table_name    = "${azurerm_route_table.routetable.name}"
   address_prefix      = "0.0.0.0/0"

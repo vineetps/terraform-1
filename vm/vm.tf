@@ -4,12 +4,11 @@
 
 resource "azurerm_managed_disk" "manageddisk" {
   name = "Terraform-Managed_Disk"
-  location = "${azurerm_resource_group.rg.location}"
-  resource_group_name = "${azurerm_resource_group.rg.name}"
+  location = "${var.Resourrce_Group_Location}"
+  resource_group_name = "${var.Resourrce_Group_Name}"
   storage_account_type = "Standard_LRS"
   create_option = "Empty"
   disk_size_gb = "20"
-
   tags {
     createdby = "Terraform"
   }
@@ -20,9 +19,9 @@ resource "azurerm_managed_disk" "manageddisk" {
 
 resource "azurerm_virtual_machine" "vm" {
   name                  = "Terraform-VM"
-  location              = "${azurerm_resource_group.rg.location}"
-  resource_group_name   = "${azurerm_resource_group.rg.name}"
-  network_interface_ids = ["${azurerm_network_interface.networkinterface.id}"]
+  location              = "${var.Resourrce_Group_Location}"
+  resource_group_name   = "${var.Resourrce_Group_Name}"
+  network_interface_ids = ["${var.Network_Interface}"]
   vm_size               = "Standard_B1s"
 
   delete_os_disk_on_termination = true

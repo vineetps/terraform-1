@@ -1,15 +1,29 @@
-## Network Interface
 
-output "Network_Interface" {
-value = "${azurerm_network_interface.networkinterface.id}"
+
+output "ID" {
+value = "${azurerm_virtual_machine.vm.id}"
 }
 
-## Resource Group
 
-output "Resourrce_Group_Location" {
-value = "${azurerm_resource_group.rg.location}"
+output "Name" {
+value = "${azurerm_virtual_machine.vm.name}"
 }
 
-output "Resourrce_Group_Name" {
-value = "${azurerm_resource_group.rg.name}"
+
+output "Location" {
+value = "${azurerm_virtual_machine.vm.location}"
+}
+
+
+output "Computer_Name" {
+value = "${azurerm_virtual_machine.vm.os_profile.1198004634.computer_name}"
+}
+
+
+output "Username" {
+value = "${azurerm_virtual_machine.vm.os_profile.1198004634.admin_username}"
+}
+
+output "OS_type" {
+value = "${azurerm_virtual_machine.vm.storage_os_disk.0.os_type}"
 }

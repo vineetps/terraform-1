@@ -7,7 +7,7 @@ echo '                Terraform Init                 '
 echo "************************************************"
 echo -e "\n"
 
-../infrastructure/terraform init
+../infrastructure/terraform init -lock=false
 
 
 echo -e "\n"
@@ -22,7 +22,8 @@ echo -e "\n"
            -var client_id=${client_id} \
            -var client_secret=${client_secret} \
            -var subscription_id=${subscription_id} \
-           -var tenant_id=${tenant_id}
+           -var tenant_id=${tenant_id} \
+           -lock=false
 
 echo -e "\n"
 echo "************************************************"

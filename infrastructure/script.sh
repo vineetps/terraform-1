@@ -40,5 +40,4 @@ echo '                Creating Output.tfvars          '
 echo "************************************************"
 echo -e "\n"
 
-sudo su
-./terraform output | sed -ne 's/\(.*\) = \(.*\)/\1="\2"/p' > ../vm/output.tfvars
+./terraform output | sed -ne 's/\(.*\) = \(.*\)/\1="\2"/p' > /tmp/infra-output.tfvars

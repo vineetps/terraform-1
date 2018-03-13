@@ -1,9 +1,3 @@
-#################################################################
-
-
-
-## Vnet
-
 resource "azurerm_virtual_network" "vnet" {
   name                = "VineetVNet"
   address_space       = ["10.0.0.0/16"]
@@ -11,7 +5,6 @@ resource "azurerm_virtual_network" "vnet" {
   resource_group_name = "${azurerm_resource_group.rg.name}"
 }
 
-## Subnet- Public A
 
 resource "azurerm_subnet" "PublicSubnetA" {
     resource_group_name  = "${azurerm_resource_group.rg.name}"
@@ -20,7 +13,6 @@ resource "azurerm_subnet" "PublicSubnetA" {
     address_prefix = "10.0.1.0/24"
   }
 
-## Subnet- Private A
 
 resource "azurerm_subnet" "PrivateSubnetA" {
     resource_group_name  = "${azurerm_resource_group.rg.name}"
@@ -30,8 +22,6 @@ resource "azurerm_subnet" "PrivateSubnetA" {
   }
 
 
-## Subnet- Public B
-
 resource "azurerm_subnet" "PublicSubnetB" {
     resource_group_name  = "${azurerm_resource_group.rg.name}"
     virtual_network_name = "${azurerm_virtual_network.vnet.name}"
@@ -39,7 +29,6 @@ resource "azurerm_subnet" "PublicSubnetB" {
     address_prefix = "10.0.3.0/24"
   }
 
-## Subnet- Private B
 
 resource "azurerm_subnet" "PrivateSubnetB" {
     resource_group_name  = "${azurerm_resource_group.rg.name}"
@@ -49,7 +38,7 @@ resource "azurerm_subnet" "PrivateSubnetB" {
   }
 
 
-## Security Group
+
 
 resource "azurerm_network_security_group" "securitygroup" {
     name                = "Vineet-SG"
@@ -59,9 +48,6 @@ resource "azurerm_network_security_group" "securitygroup" {
        createdby  = "Terraform"
     }
 }
-
-## Security Group Ingress
-
 resource "azurerm_network_security_rule" "ingress" {
         name                       = "Any"
         priority                   = 1001
@@ -76,20 +62,17 @@ resource "azurerm_network_security_rule" "ingress" {
   	network_security_group_name = "${azurerm_network_security_group.securitygroup.name}"
     }
 
-
-## Public IP
-
 resource "azurerm_public_ip" "eip" {
   name                         = "Vineet-PublicIP"
   location                     = "${azurerm_resource_group.rg.location}"
   resource_group_name          = "${azurerm_resource_group.rg.name}"
-  public_ip_address_allocation = "Static"
+  public_ip_address_allocation = "Dynamic"
+  idle_timeout_in_minutes      = 30
+
   tags {
-   createdby = "Terraform"
+    environment = "test"
   }
 }
-
-## Network Interface- Private IP
 
 resource "azurerm_network_interface" "networkinterface" {
   name                = "Vineet-NetworkInterface"
@@ -98,26 +81,23 @@ resource "azurerm_network_interface" "networkinterface" {
   tags {
         createdby = "Terraform"
     }
+
   ip_configuration {
     name                          = "Vineet"
     subnet_id                     = "${azurerm_subnet.PublicSubnetA.id}"
     private_ip_address_allocation = "dynamic"
+    public_ip_address_id          = "dynamic"
   }
 }
 
-## Route Table
 
-
-resource "azurerm_route_table" "routetable" {
-  name                = "Vineet-RouteTable"
+resource "azurerm_lb" "loadbalancer" {
+  name                = "Vineet-LoadBalancer"
   location            = "${azurerm_resource_group.rg.location}"
   resource_group_name = "${azurerm_resource_group.rg.name}"
-}
 
-resource "azurerm_route" "routeentry" {
-  name                = "Vineet_RouteEnry"
-  resource_group_name = "${azurerm_resource_group.rg.name}"
-  route_table_name    = "${azurerm_route_table.routetable.name}"
-  address_prefix      = "0.0.0.0/0"
-  next_hop_type       = "internet"
+  frontend_ip_configuration {
+    name                 = "PublicIPAddress"
+    public_ip_address_id = "${azurerm_network_interface.networkinterface.ip_configuration.public_ip_address_id}"
+  }
 }

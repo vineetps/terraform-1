@@ -1,20 +1,17 @@
- #!/bin/sh
-uname -a
-#apt-get --yes install sudo
+#!/bin/sh
+
+
 echo "******Terraform Init******"
-pwd
-echo "~~~~~~~~~~~~~~~~~~~~~Logged User~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-id
-#cd workspace/TerraformInit/
-#wget https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_386.zip -P /tmp
-unzip -o /tmp/terraform_0.11.3_linux_386.zip -d /tmp
-#cp /tmp/terraform /usr/bin
+
+
+
+
 wget https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_386.zip
+
 unzip -o /tmp/terraform_0.11.3_linux_386.zip
+
 ./terraform init
-#./terraform apply
+
 ./terraform apply -auto-approve -var client_id=${client_id} -var client_secret=${client_secret} -var subscription_id=${subscription_id} -var tenant_id=${tenant_id}
 
-#sudo /tmp/tools/org.jenkinsci.plugins.terraform.TerraformInstallation/Terraform/terraform init
-#sudo /tmp/tools/org.jenkinsci.plugins.terraform.TerraformInstallation/Terraform/terraform apply -input=false -auto-approve
-#sudo /tmp/tools/org.jenkinsci.plugins.terraform.TerraformInstallation/Terraform/terraform show > output.txt
+./terraform show > output.txt

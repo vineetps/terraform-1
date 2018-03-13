@@ -8,7 +8,9 @@ echo -e "\n"
 
 wget https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_386.zip
 
-unzip -o /tmp/terraform_0.11.3_linux_386.zip
+unzip -o terraform_0.11.3_linux_386.zip
+
+rm -rf terraform_0.11.3_linux_386.zip
 
 echo -e "\n"
 echo "************************************************"

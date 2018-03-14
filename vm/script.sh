@@ -18,7 +18,7 @@ echo -e "\n"
 
 ../infrastructure/terraform apply \
            -auto-approve \
-           -var-file=/tmp/infra-output.tfvars \
+           -var-file=infra-output.tfvars \
            -var client_id=${client_id} \
            -var client_secret=${client_secret} \
            -var subscription_id=${subscription_id} \

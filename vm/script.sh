@@ -25,9 +25,20 @@ echo -e "\n"
            -var tenant_id=${tenant_id} \
            -lock=false
 
+
 echo -e "\n"
 echo "************************************************"
-echo '                Creating Output.json          '
+echo '                  Terraform Show                '
+echo "************************************************"
+echo -e "\n"
+
+../infrastructure/terraform show
+
+
+
+echo -e "\n"
+echo "************************************************"
+echo '                Creating Output.json            '
 echo "************************************************"
 echo -e "\n"
 

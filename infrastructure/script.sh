@@ -34,9 +34,19 @@ echo -e "\n"
            -var tenant_id=${tenant_id}
 
 
+
 echo -e "\n"
 echo "************************************************"
-echo '                Creating Output.tfvars          '
+echo '                  Terraform Show                '
+echo "************************************************"
+echo -e "\n"
+
+./terraform show
+
+
+echo -e "\n"
+echo "************************************************"
+echo '                Creating tfvars file            '
 echo "************************************************"
 echo -e "\n"
 

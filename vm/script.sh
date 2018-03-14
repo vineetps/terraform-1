@@ -7,7 +7,7 @@ echo '                Terraform Init                 '
 echo "************************************************"
 echo -e "\n"
 
-../infrastructure/terraform init -lock=false
+../infrastructure/terraform init
 
 
 echo -e "\n"
@@ -32,4 +32,4 @@ echo "************************************************"
 echo -e "\n"
 
 
-../infrastructure/terraform output -json > /tmp/vm-output.json
+../infrastructure/terraform output -json > vm-output.json

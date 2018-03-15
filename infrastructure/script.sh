@@ -51,3 +51,4 @@ echo "************************************************"
 echo -e "\n"
 
 ./terraform output | sed -ne 's/\(.*\) = \(.*\)/\1="\2"/p' > ../vm/infra-output.tfvars
+./terraform output -json > ../vm/infra-output.json

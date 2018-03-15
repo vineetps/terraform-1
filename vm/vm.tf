@@ -11,10 +11,10 @@ resource "azurerm_managed_disk" "disk" {
 
 ## data
 
-data "azure_public_ip" "eip" {
-name = "VM-IP"
-resource_group_name = "${var.Resource_Group_Name}"
-}
+##data "azure_public_ip" "eip" {
+##name = "VM-IP"
+##resource_group_name = "${var.Resource_Group_Name}"
+##}
 
 ## Linux VM
 

@@ -28,6 +28,6 @@ output "OS_type" {
 value = "${azurerm_virtual_machine.vm.storage_os_disk.0.os_type}"
 }
 
-output "Public_IP" {
-value = "${data.azure_public_ip.eip.ip_address}"
-}
+#output "Public_IP" {
+#value = "${data.azure_public_ip.eip.ip_address}"
+#}

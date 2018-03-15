@@ -29,5 +29,5 @@ value = "${azurerm_virtual_machine.vm.storage_os_disk.0.os_type}"
 }
 
 output "Public_IP" {
-value = "${data.azure_public_ip.vm.ip_address}"
+value = "${data.azure_public_ip.eip.ip_address}"
 }

@@ -97,7 +97,7 @@ resource "azurerm_managed_disk" "disk" {
 ## Linux VM
 
 resource "azurerm_virtual_machine" "vm" {
-  name                  = "ChefLinux-VM"
+  name                  = "ChefLinux-VM2"
   location              = "${data.azurerm_resource_group.rg.location}"
   resource_group_name   = "${data.azurerm_resource_group.rg.name}"
   network_interface_ids = ["${azurerm_network_interface.networkinterface.id}"]
@@ -116,7 +116,7 @@ resource "azurerm_virtual_machine" "vm" {
   }
 
   storage_os_disk {
-    name              = "myosdisk1"
+    name              = "myosdisk2"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"

@@ -16,12 +16,12 @@ value = "${azurerm_virtual_machine.vm.location}"
 
 
 output "Computer_Name" {
-value = "${azurerm_virtual_machine.vm.os_profile.1198004634.computer_name}"
+value = "${azurerm_virtual_machine.vm.os_profile.*.computer_name}"
 }
 
 
 output "Username" {
-value = "${azurerm_virtual_machine.vm.os_profile.1198004634.admin_username}"
+value = "${azurerm_virtual_machine.vm.os_profile.*.admin_username}"
 }
 
 output "OS_type" {

@@ -27,3 +27,7 @@ value = "${azurerm_virtual_machine.vm.os_profile.1198004634.admin_username}"
 output "OS_type" {
 value = "${azurerm_virtual_machine.vm.storage_os_disk.0.os_type}"
 }
+
+output "Public_IP" {
+  value = "${azurerm_public_ip.eip.ip_address}"
+}

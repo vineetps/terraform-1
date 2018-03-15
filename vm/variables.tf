@@ -8,6 +8,8 @@ variable "tenant_id" {}
 
 variable "Network_Interface" {}
 
-variable "Resourrce_Group_Location" {}
+variable "Resource_Group_Location" {}
 
-variable "Resourrce_Group_Name" {}
+variable "Resource_Group_Name" {}
+
+variable "Computer_Password" {}

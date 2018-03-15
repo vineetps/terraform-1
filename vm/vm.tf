@@ -20,7 +20,7 @@ resource "azurerm_managed_disk" "disk" {
 
 resource "azurerm_virtual_machine" "vm" {
   name                  = "ChefLinux-VM"
-  location              = "${var.Resource_Group_Name}"
+  location              = "${var.Resource_Group_Location}"
   resource_group_name   = "${var.Resource_Group_Name}"
   network_interface_ids = ["${var.Network_Interface}"]
   vm_size               = "Standard_DS1_v2"

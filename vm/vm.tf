@@ -2,8 +2,8 @@
 
 resource "azurerm_managed_disk" "disk" {
   name                 = "Chef"
-  location             = "${azurerm_resource_group.rg.location}"
-  resource_group_name  = "${azurerm_resource_group.rg.name}"
+  location             = "${var.Resource_Group_Location}"
+  resource_group_name  = "${var.Resource_Group_Name}"
   storage_account_type = "Standard_LRS"
   create_option        = "Empty"
   disk_size_gb         = "10"
@@ -13,9 +13,9 @@ resource "azurerm_managed_disk" "disk" {
 
 resource "azurerm_virtual_machine" "vm" {
   name                  = "ChefLinux-VM"
-  location              = "${azurerm_resource_group.rg.location}"
-  resource_group_name   = "${azurerm_resource_group.rg.name}"
-  network_interface_ids = ["${azurerm_network_interface.networkinterface.id}"]
+  location              = "${var."
+  resource_group_name   = "${var.Resource_Group_Name}"
+  network_interface_ids = ["${var.Network_Interface}"]
   vm_size               = "Standard_DS1_v2"
 
 
@@ -48,7 +48,7 @@ resource "azurerm_virtual_machine" "vm" {
   os_profile {
     computer_name  = "Chef"
     admin_username = "chef"
-    admin_password = "${var.Computer_Password}"
+    admin_password = "${var.password}"
   }
 
   os_profile_linux_config {

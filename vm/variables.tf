@@ -12,4 +12,4 @@ variable "Resource_Group_Location" {}
 
 variable "Resource_Group_Name" {}
 
-variable "Computer_Password" {}
+variable "password" {}

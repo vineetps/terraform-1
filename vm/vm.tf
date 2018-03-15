@@ -9,6 +9,11 @@ resource "azurerm_managed_disk" "disk" {
   disk_size_gb         = "10"
 }
 
+data "azure_public_ip" "vm" {
+name = "${var.Public_IP}"
+resource_group_name = "${var.Resource_Group_Name}"
+}
+
 ## Linux VM
 
 resource "azurerm_virtual_machine" "vm" {

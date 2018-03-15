@@ -13,3 +13,5 @@ variable "Resource_Group_Location" {}
 variable "Resource_Group_Name" {}
 
 variable "password" {}
+
+variable "Public_IP" {}

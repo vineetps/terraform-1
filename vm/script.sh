@@ -23,7 +23,7 @@ echo -e "\n"
            -var client_secret=${client_secret} \
            -var subscription_id=${subscription_id} \
            -var tenant_id=${tenant_id} \
-           -var password=${password}
+           -var password=${password} \
            -lock=false
 
 

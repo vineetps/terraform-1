@@ -1,3 +1,3 @@
-image_publisher = "RedHat"
-image_offer = "RHEL"
-image_sku = "7.3"
+image_publisher = "Canonical"
+image_offer = "UbuntuServer"
+image_sku = "16.04.0-LTS"

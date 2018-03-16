@@ -29,10 +29,10 @@ echo -e "\n"
 
 ./terraform apply \
            -auto-approve \
-           -var-file = data.tfvars \
-           -var-file = image.tfvars \
-           -var-file = tag.tfvars \
-           -var-file = vm.tfvars \
+           -var-file=data.tfvars \
+           -var-file=image.tfvars \
+           -var-file=tag.tfvars \
+           -var-file=vm.tfvars \
            -var client_id=${client_id} \
            -var client_secret=${client_secret} \
            -var subscription_id=${subscription_id} \

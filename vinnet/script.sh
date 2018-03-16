@@ -48,3 +48,4 @@ echo -e "\n"
 
 
 ./terraform output -json > vm-output.json
+./terraform output  > vm-output.txt
